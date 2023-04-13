@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Button from 'react-bootstrap/Button'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 interface TSFunctionalComponentProps {
   textContent: string
@@ -14,6 +15,9 @@ const TSFunctionalComponent = (props: TSFunctionalComponentProps) => {
   // con un valore che non deve descriverne il tipo per sempre
   const [firstName, setFirstName] = useState<null | string>(null)
 
+  const navigate = useNavigate()
+  const location = useLocation()
+
   return (
     <div style={{ color: props.color || 'black' }}>
       <h2>Functional Component</h2>
@@ -22,11 +26,15 @@ const TSFunctionalComponent = (props: TSFunctionalComponentProps) => {
         {props.textContent} - {props.count}
       </p>
       <Button
-        onClick={() =>
+        onClick={() => {
+          console.log(location)
           setFirstName(firstName === 'Stefano' ? 'Giovanni' : 'Stefano')
-        }
+        }}
       >
         CHANGE NAME
+      </Button>
+      <Button variant="warning" onClick={() => navigate('/class')}>
+        GO TO CLASS PAGE
       </Button>
     </div>
   )

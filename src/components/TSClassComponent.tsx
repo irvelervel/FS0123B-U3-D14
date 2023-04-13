@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 // In App.tsx riceviamo un errore se proviamo a passare una prop a TSClassComponent
 // perchè questo componente, di default, al momento non si sta aspettando nessuna prop
@@ -53,6 +54,9 @@ class TSCLassComponent extends Component<
         >
           CHANGE NAME
         </Button>
+        <Link to="/function">
+          <div className="btn btn-warning">GO TO FUNCTIONAL PAGE</div>
+        </Link>
       </div>
     )
   }
